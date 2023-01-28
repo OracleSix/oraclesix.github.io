@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>菜鸟教程(runoob.com)</title>
 </head>
-<body bgcolor="blue">
+<body bgcolor="gray">
 
 <p>请输出一个 5 到 10 之间的数字:</p>
 
@@ -28,8 +28,9 @@ function myFunction() {
     catch(err) {
         message.innerHTML = "错误: " + err;
     }
-     
-x = "";
+    finally {
+    document.getElementById("demo").value = "";
+}
 }
 </script>
 
