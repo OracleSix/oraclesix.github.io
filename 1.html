@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    div {
+    background-color: aqua;
+    width: 270px;
+    height: 270px;
+    }
+  </style>
+   <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+   <script>
+    $(function(){
+    $("button").click(function(){
+      $("div").toggle(1000,"swing")
+      setTimeout(repet,2000)
+      function repet(){
+      for(var i = 0;i<1;i++){
+      alert("success");
+      confirm("sure?");
+      prompt("please type something ")
+      }
+    }
+    })
+
+    })
+
+
+
+   </script>
+</head>
+<body>
+<div></div>
+<h1><button>隐藏/显示</button></h1>
+
+</body>
