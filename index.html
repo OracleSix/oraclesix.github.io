@@ -1,84 +1,62 @@
+<!DOCTYPE html>
 <html>
-
-<style>
-#game-container {
-  width: 500px;
-  height: 500px;
-  background-color: #ccc;
-  position: relative;
-}
-#snake-container {
-  position: absolute;
-  width: 100%!;(MISSING)
-  height: 100%!;(MISSING)
-}
-.snake-block {
-  width: 10px;
-  height: 10px;
-  background-color: #000;
-  position: absolute;
-}
-#food-container {
-  position: absolute;
-  width: 100%!;(MISSING)
-  height: 100%!;(MISSING)
-}
-.food-block {
-  width: 10px;
-  height: 10px;
-  background-color: #f00;
-  position: absolute;
-}
-</style>
-<script>
-const gameContainer = document.getElementById('game-container');
-const snakeContainer = document.getElementById('snake-container');
-const foodContainer = document.getElementById('food-container');
-let snake = [{x: 0, y: 0}];
-let food = {x: 10, y: 10};
-// Create the snake
-function createSnake() {
-  for (let i = 0; i < snake.length; i++) {
-    let snakeBlock = document.createElement('div');
-    snakeBlock.classList.add('snake-block');
-    snakeBlock.style.left = snake[i].x + 'px';
-    snakeBlock.style.top = snake[i].y + 'px';
-    snakeContainer.appendChild(snakeBlock);
-  }
-}
-// Create the food
-function createFood() {
-  let foodBlock = document.createElement('div');
-  foodBlock.classList.add('food-block');
-  foodBlock.style.left = food.x + 'px';
-  foodBlock.style.top = food.y + 'px';
-  foodContainer.appendChild(foodBlock);
-}
-// Move the snake
-function moveSnake() {
-  // Code for moving the snake
-}
-// Check for collision
-function checkCollision() {
-  // Code for checking collision
-}
-// Initialize the game
-function init() {
-  createSnake();
-  createFood();
-  moveSnake();
-  checkCollision();
-}
-init();
-</script>
-<body>
-<div id="game-container">
-  <div id="snake-container">
-    <div class="snake-block"></div>
-  </div>
-  <div id="food-container">
-    <div class="food-block"></div>
-  </div>
-</div>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<title>OracleSix'Blog</title>
+		<!--CSS-->
+		<style>
+                        button.sideC {border:solid black;border-radius:30px;}
+			div.up {background-color: lightblue;height: 50px;}
+			div.down {background-color: lightblue;height: 50px;}
+			body {background-color:gainsboro;}
+			a.github {text-decoration: none;}
+			h1.github {text-align: center;}
+			div.sideT {background-color: lightgoldenrodyellow;height: 1000px;;width: 200px;}
+			input {width: 360px;}
+		</style>
+		<!--Jquery和本地JS-->
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+		<script>
+			
+			function welcome () {
+				confirm("欢迎！本站持续建设中...");
+			}
+			
+            $(document).ready(function(){
+				$("button.sideC").click(function(){
+					$("div.sideT").slideToggle(2000,"swing")
+					
+				})
+				
+			})
+			$(document).ready(function(){
+				$("button.refreshTime").click(function(){
+					$("input").val(Date)
+				})
+				
+			})
+			
+			
+		</script>
+	</head>
+	<body onload="welcome()">
+		<div class="up"></div>
+		<hr><br>
+		<h1 class="github"><a class="github" href="http://github.com/oraclesix">OracleSix</a></h1><br /><hr>
+		<button class="sideC">展开/收回</button>
+		<div class="sideT">工具栏 功能添加中...<hr>
+			<li>免费解析视频</li>
+			<li>计算器</li>
+		</div>
+		
+		
+		
+		
+		
+		
+	</body>
+	<footer>
+		<input type="text" value="time"><button class="refreshTime">刷新</button>
+		<div class="down"></div>
+	</footer>
 </html>
