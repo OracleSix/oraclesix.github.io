@@ -1,129 +1,87 @@
-<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>OracleSix'Blog</title>
-		<!--CSS-->
-		<style>
-                        #snake-game {
-  width: 400px;
-  height: 400px;
-  margin: 0 auto;
+
+<style>
+// CSS
+#game-container {
+  width: 500px;
+  height: 500px;
+  background-color: #ccc;
+  position: relative;
 }
-		</style>
-		<!--Jquery和本地JS-->
-		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-		<script>
-			
-			function welcome () {
-				confirm("欢迎！本站持续建设中...");
-			}
-			
-            $(document).ready(function(){
-				$("button.sideC").click(function(){
-					$("div.sideT").slideToggle(2000,"swing")
-					
-				})
-				
-			})
-			$(document).ready(function(){
-				$("button.refreshTime").click(function(){
-					$("input").val(Date)
-				})
-				
-			})
+#snake-container {
+  position: absolute;
+  width: 100%!;(MISSING)
+  height: 100%!;(MISSING)
+}
+.snake-block {
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  position: absolute;
+}
+#food-container {
+  position: absolute;
+  width: 100%!;(MISSING)
+  height: 100%!;(MISSING)
+}
+.food-block {
+  width: 10px;
+  height: 10px;
+  background-color: #f00;
+  position: absolute;
+}
+</style>
+<script>
 // JavaScript
-// Initialize the game
-let canvas = document.getElementById('game-canvas');
-let ctx = canvas.getContext('2d');
-let snakeSize = 10;
-let w = 400;
-let h = 400;
-let score = 0;
-let snake;
-let food;
+const gameContainer = document.getElementById('game-container');
+const snakeContainer = document.getElementById('snake-container');
+const foodContainer = document.getElementById('food-container');
+let snake = [{x: 0, y: 0}];
+let food = {x: 10, y: 10};
 // Create the snake
-function init() {
-  snake = [];
-  for (let i = 0; i < 5; i++) {
-    snake.push({x: i, y:0});
+function createSnake() {
+  for (let i = 0; i < snake.length; i++) {
+    let snakeBlock = document.createElement('div');
+    snakeBlock.classList.add('snake-block');
+    snakeBlock.style.left = snake[i].x + 'px';
+    snakeBlock.style.top = snake[i].y + 'px';
+    snakeContainer.appendChild(snakeBlock);
   }
 }
 // Create the food
 function createFood() {
-  food = {
-    x: Math.floor(Math.random()*(w-snakeSize)/snakeSize), 
-    y: Math.floor(Math.random()*(h-snakeSize)/snakeSize), 
-  };
+  let foodBlock = document.createElement('div');
+  foodBlock.classList.add('food-block');
+  foodBlock.style.left = food.x + 'px';
+  foodBlock.style.top = food.y + 'px';
+  foodContainer.appendChild(foodBlock);
 }
-// Draw the snake
-function drawSnake() {
-  for(let i = 0; i < snake.length; i++) {
-    ctx.fillStyle = (i == 0)? "green" : "white";
-    ctx.fillRect(snake[i].x*snakeSize, snake[i].y*snakeSize, snakeSize, snakeSize);
-    ctx.strokeStyle = "red";
-    ctx.strokeRect(snake[i].x*snakeSize, snake[i].y*snakeSize, snakeSize, snakeSize);
-  }
+// Move the snake
+function moveSnake() {
+  // Code for moving the snake
 }
-// Draw the food
-function drawFood() {
-  ctx.fillStyle = "yellow";
-  ctx.fillRect(food.x*snakeSize, food.y*snakeSize, snakeSize, snakeSize);
-  ctx.strokeStyle = "red";
-  ctx.strokeRect(food.x*snakeSize, food.y*snakeSize, snakeSize, snakeSize);
+// Check for collision
+function checkCollision() {
+  // Code for checking collision
 }
-// Main game loop
-function main() {
-  ctx.clearRect(0,0,w,h);
-  drawSnake();
-  drawFood();
-  // Logic to make the snake move
-  let snakeX = snake[0].x;
-  let snakeY = snake[0].y;
-  // Which direction
-  if(direction == "right") snakeX++;
-  else if(direction == "left") snakeX--;
-  else if(direction == "up") snakeY--;
-  else if(direction == "down") snakeY++;
-  // If the snake eats the food
-  if(snakeX == food.x && snakeY == food.y){
-    score++;
-    createFood();
-  }
-  else {
-    // Remove the last part of the snake
-    snake.pop();
-  }
-  // Add new Head
-  let newHead = {
-    x: snakeX,
-    y: snakeY
-  };
-  // Game over
-  if(snakeX < 0 || snakeY < 0 || snakeX >= w/snakeSize || snakeY >= h/snakeSize || checkCollision(newHead,snake)) {
-    // Stop the game
-    clearInterval(game);
-    alert("Game Over");
-  }
-  snake.unshift(newHead);
-  ctx.fillStyle = "white";
-  ctx.font = "45px Changa one";
-  ctx.fillText(score,2*snakeSize,1.6*snakeSize);
+// Initialize the game
+function init() {
+  createSnake();
+  createFood();
+  moveSnake();
+  checkCollision();
 }
-// Call the main function every 100ms
-let game = setInterval(main, 100);
-
-			
-			
-		</script>
-	</head>
-	<body onload="Welcome()">
-		<div id="snake-game">
-  <canvas id="game-canvas" width="400" height="400"></canvas>
+init();
+</script>
+<body>
+// HTML
+<div id="game-container">
+  <div id="snake-container">
+    <div class="snake-block"></div>
+  </div>
+  <div id="food-container">
+    <div class="food-block"></div>
+  </div>
 </div>
-	</body>
-	<footer>
-		<input type="text" value="time"><button class="refreshTime">刷新</button>
-		<div class="down"></div>
-	</footer>
+</body>
 </html>
